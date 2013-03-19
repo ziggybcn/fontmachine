@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<ModSignature xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>FontMachine module for Mojo</Name>
+  <MajorVersion>13</MajorVersion>
+  <MinorVersion>03</MinorVersion>
+  <Revision>11</Revision>
+  <Build>A</Build>
+  <Kind>ZipFolder</Kind>
+  <UpdateURL>http://www.jungleide.com/fontmachine/fontmachine-13-03-11-A.zip</UpdateURL>
+  <RemoteSignatureURL>http://www.jungleide.com/fontmachine/fontmachine.lmbs</RemoteSignatureURL>
+  <ShortDescription>Added a new substring DrawText command that allows substrings to be drawn witohut requiring the creation of temporary string instances</ShortDescription>
+  <RequireCredentials>false</RequireCredentials>
+  <MoreInfoURL>http://www.jungleide.com/?page_id=515</MoreInfoURL>
+</ModSignature>
