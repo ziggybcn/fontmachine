@@ -18,14 +18,14 @@ Class TextLine
 		For Local i:Int = 0 Until text.Length
 			Local char:Int = text[i]
 			'This calculates the drawing VISUAL size, but not spacing (kerning, overlapping of chars, etc.)
-			Local tokensize:Int = font.GetTxtWidth(text, tokeninit, i) '- font.GetTxtWidth(text, i, i)
+			Local tokensize:Int = font.GetTxtWidth(text, tokeninit + 1, i + 1) '- font.GetTxtWidth(text, i, i)
 
 			If (char >= "a"[0] And char <= "z"[0]) or (char >= "A"[0] And char <= "Z"[0]) or (char >= "0"[0] And char <= "9"[0]) Then
 				If previousIsSeparator Then
 					previousIsSeparator = False
 					linesize += GetTxtSpacing(text, font, tokeninit, i)
 					tokeninit = i
-					tokensize = font.GetTxtWidth(text, tokeninit, i) '- font.GetTxtWidth(text, i, i)
+					tokensize = font.GetTxtWidth(text, tokeninit + 1, i + 1) '- font.GetTxtWidth(text, i, i)
 				EndIf
 			Else
 				'This calculates text spacing:
