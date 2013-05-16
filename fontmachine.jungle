@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<JungleSolution xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Project>.\sample4\sample4.jiproj</Project>
+  <Project>.\fontmachine module.jiproj</Project>
+  <Project>.\sample programs\Sample1.jiproj</Project>
+  <Project>.\sample programs\Sample3.jiproj</Project>
+  <Project>.\sample programs\Sample2.jiproj</Project>
+</JungleSolution>
