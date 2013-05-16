@@ -58,7 +58,7 @@ Class WordWrapedText
 	End
 	
 	
-	Method Draw(x:Float, y:Float)
+	Method Draw(x:Float, y:Float, align:Int = eDrawAlign.LEFT)
 		
 		Local i:int = 0
 		Local drawpos:= New DrawingPoint
@@ -69,7 +69,7 @@ Class WordWrapedText
 			Local tl:TextLine = GetLine(index)
 			For Local interval:TxtInterval = EachIn tl.Intervals.contents
 				
-				Self.Font.DrawText(tl.text, drawpos.x, drawpos.y + i * Font.GetFontHeight, eDrawAlign.LEFT, interval.InitOffset + 1, interval.EndOffset)
+				Self.Font.DrawText(tl.text, drawpos.x, drawpos.y + i * Font.GetFontHeight, align, interval.InitOffset + 1, interval.EndOffset)
 				i += 1
 			Next
 			curline += 1
