@@ -2,7 +2,7 @@ Import textline
 Private
 Const CR:= "~n"
 Public
-Class WordWrapedText
+Class WordWrappedText
 
 	Method Text:String() Property
 		Return text
