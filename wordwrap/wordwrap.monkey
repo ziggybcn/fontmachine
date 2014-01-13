@@ -54,7 +54,7 @@ Class WordWrappedText
 	End
 	
 	Method WrappedTextHeight:Int()
-		Return Font.GetFontHeight * WrappedLinesCount
+		Return (Font.GetFontHeight + Font.Kerning.y) * WrappedLinesCount
 	End
 	
 	Method GetLine:TextLine(index:Int)
