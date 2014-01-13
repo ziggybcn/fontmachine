@@ -1,5 +1,4 @@
 Import fontmachine
-'Import fontmachine.wordwrap
 Import mojo
 Function Main()
 	Local g:= New Game
@@ -34,5 +33,7 @@ Class Game Extends App
 		DrawRect(100, 100, wrappedtext.Width, 5000)
 		SetColor(255, 255, 255)
 		wrappedtext.Draw(100, 100)
+		 
+		wrappedtext.PartialDraw(3, 3, 20, 40)
 	End
 End
