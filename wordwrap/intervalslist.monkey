@@ -1,10 +1,8 @@
 Import txtinterval
 Class IntervalsList
 
-	Field count:Int = 0
 	Method Clear()
 		contents.Clear()
-		count = 0
 	End
 
 	Method AddInterval(initPoint:Int, endPoint:Int)

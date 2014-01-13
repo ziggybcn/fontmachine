@@ -29,6 +29,7 @@ Class Game Extends App
 	Method OnRender()
 		Cls(255,255,255)
 		font.DrawText("Press A or S to modify the wordwrapp area width", 0, 0)
+		font.DrawText("Wrapped lines = " + wrappedtext.WrappedLinesCount, 0, 20)
 		SetColor(200, 200, 200)
 		DrawRect(100, 100, wrappedtext.Width, 5000)
 		SetColor(255, 255, 255)
