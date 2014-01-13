@@ -18,6 +18,7 @@ Class TextLine
 		intervalsCount = 0
 		For Local i:Int = 0 Until text.Length
 			Local char:Int = text[i]
+			
 			'This calculates the drawing VISUAL size, but not spacing (kerning, overlapping of chars, etc.)
 			Local tokensize:Int = font.GetTxtWidth(text, tokeninit + 1, i + 1) '- font.GetTxtWidth(text, i, i)
 
@@ -34,8 +35,10 @@ Class TextLine
 				linesize += tokensize
 				tokeninit = i  	'We begin next token
 				
-				tokensize = 0	'No token, it was a separator
+				'tokensize = 0	'No token, it was a separator
+				tokensize = font.GetTxtWidth(text, tokeninit + 1, i + 1) '- font.GetTxtWidth(text, i, i)
 				previousIsSeparator = True
+				
 			EndIf
 			
 			
