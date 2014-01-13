@@ -6,7 +6,7 @@ Class TextLine
 	
 	Method Lines:Int()
 		'Optimize later:
-		Return Intervals.count
+		Return intervalsCount
 	End
 	
 	Method AdjustLine(font:bitmapfont.BitmapFont, maxwidth:Int)
@@ -15,6 +15,7 @@ Class TextLine
 		Local linesize:Int = 0
 		Local previousIsSeparator:Bool = False
 		Intervals.Clear()
+		intervalsCount = 0
 		For Local i:Int = 0 Until text.Length
 			Local char:Int = text[i]
 			'This calculates the drawing VISUAL size, but not spacing (kerning, overlapping of chars, etc.)
@@ -39,13 +40,14 @@ Class TextLine
 			
 			
 			If linesize + tokensize > maxwidth Then	'Slip the line!
-				Intervals.AddInterval(linestart, tokeninit)	'previous line starts BEFORE splitting token
+				AddInterval(linestart, tokeninit)	'previous line starts BEFORE splitting token
 				linesize = 0
 				linestart = tokeninit	'next line Starts at spliting token
 			End
 			
 		Next
-		Intervals.AddInterval(linestart, text.Length)	'previous line starts BEFORE splitting token
+		AddInterval(linestart, text.Length)	'previous line starts BEFORE splitting token
+		
 	End
 	
 	Method GetTxtSpacing:Int(text:String, font:BitmapFont, init:Int, ending:Int)
@@ -57,5 +59,10 @@ Class TextLine
 		Next
 		Return size
 	End
-	
+	Private
+	Method AddInterval(linestart:Int, length:Int)
+		Intervals.AddInterval(linestart, length)	'previous line starts BEFORE splitting token
+		intervalsCount += 1
+	End
+	Field intervalsCount:Int = 0
 End

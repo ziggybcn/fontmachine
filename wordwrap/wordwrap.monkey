@@ -45,6 +45,18 @@ Class WordWrappedText
 		Return linesCount + 1
 	End
 	
+	Method WrappedLinesCount:Int()
+		Local sum:Int = 0
+		For Local i:= 0 To linesCount
+			sum += lines[i].Lines()
+		Next
+		Return sum
+	End
+	
+	Method WrappedTextHeight:Int()
+		Return Font.GetFontHeight * WrappedLinesCount
+	End
+	
 	Method GetLine:TextLine(index:Int)
 		If index <= linesCount Then
 			Return lines[index]
