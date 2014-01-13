@@ -66,3 +66,5 @@ Class TextLine
 	End
 	Field intervalsCount:Int = 0
 End
+
+

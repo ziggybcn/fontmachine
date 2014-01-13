@@ -6,15 +6,6 @@ Class WordWrappedText
 
 	Method Text:String() Property
 		Return text
-		'Local result:String, done:Bool = False
-		'For Local tl:TextLine = EachIn lines
-		'	If not done Then
-		'		result = tl.text
-		'		done = True
-		'	Else
-		'		result += CR + tl.text
-		'	EndIf
-		'Next
 	End
 
 	Method Text:Void(value:String) Property
@@ -87,8 +78,21 @@ Class WordWrappedText
 			curline += 1
 		Next
 	End
-	
+	'summary: Draws part of the wrapped lines on a wordwrapp instance, starting with "firstLine" and draws "count" number of lines at the given X and Y position.
+	Method PartialDraw(firstLine:Int, count:Int, x:Int, y:Int, align:Int = eDrawAlign.LEFT)
+		Local curline:Int = 0
+		For Local i:= 0 To linesCount
+			For Local inter:TxtInterval = EachIn lines[i].Intervals.contents
+				If curline >= firstLine And curline < firstLine + count
+					Font.DrawText(lines[i].text, x, y, align, inter.InitOffset + 1, inter.EndOffset)
+					y += Font.GetFontHeight + Font.Kerning.y
+				EndIf
+				curline += 1
+			Next
+		Next
 		
+	End
+	
 	Private
 	Method AppendLine:TextLine()
 		linesCount += 1
@@ -121,6 +125,7 @@ Class WordWrappedText
 			tl.AdjustLine(Self.Font, width)
 		Next
 	End
+	
 
 	Field text:String
 	Field width:Int
