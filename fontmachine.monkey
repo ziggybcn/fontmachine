@@ -1,4 +1,9 @@
-﻿#rem
+﻿#REM monkeydoc Module fontmachine
+This module is part of the FontMachine library. 
+The FontMachine library provides a complete bitmap font system for its use in the Monkey programming language.
+#END
+
+#rem
 header:This module is part of the FontMachine library. 
 The FontMachine library provides a complete bitmap font system for its use in the Monkey programming language.
 

@@ -1,3 +1,7 @@
+#REM monkeydoc module fontmachine.wordwrap.textline
+	This module contains the TextLine class. 
+	This class handles the creation of [txtinterval] instances to handle wordwrapping of strings in FontMachine.
+#END
 Import intervalslist
 Import fontmachine
 Class TextLine
