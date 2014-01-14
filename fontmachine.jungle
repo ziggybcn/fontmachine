@@ -5,4 +5,5 @@
   <Project>.\sample programs\Sample01\Sample1.jiproj</Project>
   <Project>.\sample programs\Sample03\Sample3.jiproj</Project>
   <Project>.\sample programs\Sample02\Sample2.jiproj</Project>
+  <Project>.\sample programs\Sample05\Sample5.jiproj</Project>
 </JungleSolution>
