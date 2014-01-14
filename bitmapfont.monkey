@@ -59,9 +59,8 @@ Class BitmapFont Implements Font
 	#rem monkeydoc 
 		Set this property to True or False to enable the font shadow.
 		If the font has been rendered without a shadow, this property has no effect.
-		[a ../sample programs/sample02.monkey]Load an example in Jungle Ide.[/a]
 	#end
-	Method DrawShadow:Bool() property
+	Method DrawShadow:Bool() Property
 		Return _drawShadow
 	End
 	
@@ -72,9 +71,8 @@ Class BitmapFont Implements Font
 	#rem monkeydoc
 		Set this property to True or False to enable the font border.
 		If the font has been rendered without a border, this property has no effect.
-		[a ../sample programs/sample02.monkey]Load an example in Jungle Ide.[/a]
 	#end
-	Method DrawBorder:Bool() property
+	Method DrawBorder:Bool() Property
 		Return _drawBorder
 	End
 	
@@ -129,61 +127,9 @@ Class BitmapFont Implements Font
 		Return Self.faceChars.Length
 	End
 	
-	#rem monkeydoc 
-		This method allows you to draw a string on the graphics canvas.
-		The first parameter is the string to be drawn
-		The second and third parameters are the X and Y coordinates.
-		The third parameter is a member of eDrawAlign and determines the aligment of the text to be drawn on the graphics canvas.
-		This is a detailed example: 
-		[code]
-'We import the required modules:
-Import mojo
-Import fontmachine
- 
-'Start the program:
-Function Main() 
-	New Tutorial
-End
 
-
-Class Tutorial extends App
-
-	'We create a BitmapFont variable called font. Our font will be loaded here:
-	Field font:BitmapFont
 	
-	Method OnCreate()
-	
-		SetUpdateRate(60)
-
-		'We load the sample font (called bluesky) into our variable called font.
-		'The first parameter is the name (and path) of the font description file (txt file generated on the FontMachine editor) 
-		'The second parameter indicates if the font glipths will be loaded dynamically (true) or statically (false).
-		'If the font characters are loaded dynamically, the application will load (and download on HTML5) only required characters.
-		'Otherwise, the full font will be required. For more information about dynamic or static fonts, see the documentation.
-
-		font = New BitmapFont("bluesky/bluesky.txt", False)
-		
-		Print "Font loaded!"
-		
-	End
-	Method OnRender()
-		Cls(255,255,255)
-
-		'We just draw some text:
-		font.DrawText("Hello world",210,10, eDrawAlign.CENTER)
-	End
-	
-	Method OnUpdate()
-		If KeyDown(KEY_A) Then font.Kerning.x-=.4
-		If KeyDown(KEY_D) Then font.Kerning.x+=.4
-		If KeyDown(KEY_W) Then font.Kerning.y-=.4
-		If KeyDown(KEY_S) Then font.Kerning.y+=.4
-	End
-End
-[/code][a ../sample programs/firstsample.monkey]Load this example in Jungle Ide.[/a]
-	#end
-	
-		#rem
+	#rem
 		summary:This method allows you to draw a string on the graphics canvas.
 		This method is a simplified version of the DrawText command that asumes left aligment of text.
 	#end
@@ -209,7 +155,6 @@ End
 
 	#rem monkeydoc 
 		This method returns the width in graphic units of the given string.
-		You can see [a ../sample programs/sample03.monkey]a sample application that uses the GetTxtWidth function here.[/a]
 	#end
 	Method GetTxtWidth:Float(text:String)
 		Return GetTxtWidth(text, 1, text.Length)
@@ -691,14 +636,3 @@ End
 		
 End
 
-#rem
-footer:This FontMachine library is released under the MIT license:
-[quote]Copyright (c) 2011 Manel Ibáñez
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-[/quote]
-#end
