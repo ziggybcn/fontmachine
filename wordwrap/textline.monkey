@@ -4,15 +4,31 @@
 #END
 Import intervalslist
 Import fontmachine
+#REM monkeydoc
+	This class represents a line of text that needs to be wordwrapped. It's internally used by the [[WordWrappedText]] component.
+#END
 Class TextLine
+
+	#rem monkeydoc
+		This field contains the string that will be wordwrapped.
+	#END
 	Field text:String
+	#rem monkeydoc
+		This field contains the list of intervals that represent the wordwrapping of the [[text]]
+	#END
 	Field Intervals:= New IntervalsList
 	
+	#rem monkeydoc
+		This method return the number of text lines that are created after the wordwrap operation.
+	#END
 	Method Lines:Int()
-		'Optimize later:
 		Return intervalsCount
 	End
 	
+	#rem monkeydoc
+		This method calculates wordwrap on current [[text]].
+		This method does not create any substring so it's fast.
+	#END
 	Method AdjustLine(font:bitmapfont.BitmapFont, maxwidth:Int)
 		Local tokeninit:Int = 0
 		Local linestart:Int = 0
@@ -57,6 +73,7 @@ Class TextLine
 		
 	End
 	
+	Private
 	Method GetTxtSpacing:Int(text:String, font:BitmapFont, init:Int, ending:Int)
 		Local size:Int = 0
 		For Local i:Int = init Until Min(ending, text.Length)
@@ -66,7 +83,6 @@ Class TextLine
 		Next
 		Return size
 	End
-	Private
 	Method AddInterval(linestart:Int, length:Int)
 		Intervals.AddInterval(linestart, length)	'previous line starts BEFORE splitting token
 		intervalsCount += 1
