@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <JungleSolution xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Project>.\sample4\sample4.jiproj</Project>
+  <Project>.\sample programs\sample04\sample4.jiproj</Project>
   <Project>.\fontmachine module.jiproj</Project>
-  <Project>.\sample programs\Sample1.jiproj</Project>
-  <Project>.\sample programs\Sample3.jiproj</Project>
-  <Project>.\sample programs\Sample2.jiproj</Project>
+  <Project>.\sample programs\Sample01\Sample1.jiproj</Project>
+  <Project>.\sample programs\Sample03\Sample3.jiproj</Project>
+  <Project>.\sample programs\Sample02\Sample2.jiproj</Project>
 </JungleSolution>
