@@ -1,39 +1,29 @@
-﻿#REM monkeydoc Module fontmachine
-This module is part of the FontMachine library. 
+﻿#Rem monkeydoc module fontmachine
 The FontMachine library provides a complete bitmap font system for its use in the Monkey programming language.
 #END
 
 #rem
 header:This module is part of the FontMachine library. 
+>>>>>>> other
 The FontMachine library provides a complete bitmap font system for its use in the Monkey programming language.
 
-This library contains the following modules:
-[list]
-[*][a bitmapchar.monkey.html]bitmapchar[/a]
-[*][a bitmapcharmetrics.monkey.html]bitmapcharmetrics[/a]
-[*][a bitmapfont.monkey.html]bitmapfont[/a]
-[*][a drawingpoint.monkey.html]drawingpoint[/a]
-[*][a drawingrectangle.monkey.html]drawingrectangle[/a]
-[*][a edrawalign.monkey.html]eDrawAlign[/a]
-[*][a fontinterface.monkey.html]fontinterface[/a]
-[*]fontmachine
-[/list]
 This module allows you to load bitmapfonts and draw them in your games or applications very easilly.
 This module requires the Mojo library for monkey.
+
 #end
 'This is the fontmachine module for the Mojo.graphics framework
 Import fontmachine.bitmapfont
 Import wordwrap
  
 'summary: This constant contains the library version
-Const Version:String = "13.03.11-A"
+Const Version:String = "14.01.14-A"
 
 'summary: This constant contains the library name
 Const Name:String = "FontMachine"
 
 #rem
 footer:This FontMachine library is released under the MIT license:
-[quote]Copyright (c) 2011 Manel Ibáñez
+[quote]Copyright (c) 2011 Manel IbÃ¡Ã±ez
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
