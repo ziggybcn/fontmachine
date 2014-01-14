@@ -638,8 +638,10 @@ End
 		if endPos = - 1 or endPos > text.Length Then
 			endPos = text.Length
 		end
-		If align<>eDrawAlign.LEFT then
-			Local lineSepPos:Int = text.Find(lineSep, startPos)
+		If align <> eDrawAlign.LEFT Then
+			Local lineSepPos:Int = 0
+			If endPos <> - 1 Then lineSepPos = endPos Else lineSepPos = text.Find(lineSep, startPos)
+			
 			if lineSepPos < 0 Then lineSepPos = text.Length
 			Select align
 				Case eDrawAlign.CENTER ; xOffset = Self.GetTxtWidth(text, startPos, lineSepPos) / 2 'Forcing an INT is a good idea to prevent drawing rounding artifacts... ¿?

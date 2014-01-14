@@ -23,6 +23,7 @@ Class Game Extends App
 	Method OnUpdate()
 		If KeyDown(KEY_A) Then wrappedtext.Width += 1
 		If KeyDown(KEY_S) Then wrappedtext.Width -= 1
+		wrappedtext.Text = "Hello~nwordl! This is a large text that is displayed in the kitchen!"
 	End
 	
 	Method OnRender()
@@ -32,7 +33,7 @@ Class Game Extends App
 		SetColor(200, 200, 200)
 		DrawRect(100, 100, wrappedtext.Width, 5000)
 		SetColor(255, 255, 255)
-		wrappedtext.Draw(100, 100)
+		wrappedtext.Draw(100, 100, eDrawAlign.CENTER)
 		 
 		wrappedtext.PartialDraw(3, 3, 20, 40)
 	End
