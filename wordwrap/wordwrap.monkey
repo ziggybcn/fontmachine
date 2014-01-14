@@ -1,41 +1,77 @@
+#REM monkeydoc Module fontmachine.wordwrap
+This module is part of the FontMachine library. 
+The FontMachine library provides a complete bitmap font system for its use in the Monkey programming language.
+#END
+
 Import textline
 Private
 Const CR:= "~n"
 Public
+#rem monkeydoc
+	This class represents a square drawing area where text can be displayed adjusted.
+	This class makes it easy to implement wordwrap functionality in FontMachine. 
+	Use this class to display large areas of text on screen, with automatic adjusting of words.
+#END
 Class WordWrappedText
 
+	#rem monkeydoc
+		Use this property to get the Text associated with this WordWrappedText instance.
+	#END
 	Method Text:String() Property
 		Return text
 	End
 
+	#rem monkeydoc
+		Use this property to set the Text associated with this WordWrappedText instance.
+		When a new text is set, the adjustment of words in the draw area is recalculated.
+	#END
 	Method Text:Void(value:String) Property
+		If text = value Then Return
 		text = value
 		Recalculate()
 	End
 	
+	#rem monkeydoc
+		Use this property to get the width of the drawing area associated with this WordWrappedText instance.
+	#END
 	Method Width:Int() Property
 		Return width
 	End
 	
+	#rem monkeydoc
+		Use this property to set the width of the drawing area associated with this WordWrappedText instance.
+	#END
 	Method Width:Void(value:Int) Property
 		width = value
 		Recalculate()
 	End
 	
+	#rem monkeydoc
+		Use this property to get the [[BitmapFont]] associated with this WordWrappedText instance.
+	#END
 	Method Font:BitmapFont() Property
 		Return font
 	End
 	
+	#rem monkeydoc
+		Use this property to set the [[BitmapFont]] associated with this WordWrappedText instance.
+	#END
 	Method Font:Void(value:BitmapFont) Property
 		font = value
 		Recalculate()
 	End
 	
-	
+	#rem monkeydoc
+		This method will return the number of text lines in the text that is being handled by this WordWrappedText instance.
+	#END	
 	Method Lines:Int()
 		Return linesCount + 1
 	End
 	
+	#rem monkeydoc
+		This method will return the number of lines that are displayed into the drawing canvas when the text is drawn into the screen.
+		This includes the lines that are created in order to adjust text to the available space.
+	#END	
 	Method WrappedLinesCount:Int()
 		Local sum:Int = 0
 		For Local i:= 0 To linesCount
@@ -44,10 +80,17 @@ Class WordWrappedText
 		Return sum
 	End
 	
+	#rem monkeydoc
+		This method will return the height in graphic units that the wrapped text takes to be drawn.
+	#END	
 	Method WrappedTextHeight:Int()
 		Return (Font.GetFontHeight + Font.Kerning.y) * WrappedLinesCount
 	End
 	
+	#rem monkeydoc
+		This method returns a TextLine in the given index.
+		When a text is meant to be wrapped, it's split in [[TextLine]]s, and each line contains a set of text intervals that can be used to represent portions of the text that needs to be drawn in an adjusted text line.		
+	#END	
 	Method GetLine:TextLine(index:Int)
 		If index <= linesCount Then
 			Return lines[index]
@@ -56,11 +99,17 @@ Class WordWrappedText
 		EndIf
 	End
 
+	#Rem monkeydoc
+		This method can be used to reset the contents of the WordWrappedText component.
+	#END
 	Method Clear()
 		linesCount = -1
 	End
 	
 	
+	#Rem monkeydoc
+		This method draws the WordWrappedText at the given location.
+	#END
 	Method Draw(x:Float, y:Float, align:Int = eDrawAlign.LEFT)
 		
 		Local i:int = 0
@@ -78,7 +127,9 @@ Class WordWrappedText
 			curline += 1
 		Next
 	End
-	'summary: Draws part of the wrapped lines on a wordwrapp instance, starting with "firstLine" and draws "count" number of lines at the given X and Y position.
+	#Rem monkeydoc
+		This method Draws part of the wrapped lines on a wordwrapp instance, starting with "firstLine" and draws "count" number of lines at the given X and Y position.
+	#END
 	Method PartialDraw(firstLine:Int, count:Int, x:Int, y:Int, align:Int = eDrawAlign.LEFT)
 		Local curline:Int = 0
 		For Local i:= 0 To linesCount
