@@ -29,6 +29,11 @@ Class DrawingPoint
 	Method Set(x:Float, y:Float)
 		Self.x = x; Self.y = y
 	End
+	
+	Method New(x:Float, y:Float)
+		Self.x = x
+		Self.y = y
+	End
 End
 
 
