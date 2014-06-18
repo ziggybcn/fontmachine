@@ -1,4 +1,4 @@
-#rem
+Ôªø#rem
 summary:This is the base font interface. Any font should implement this interface.
 This is just an interface provided for easy integration with other font libraries.
 The real bitmapfont objects used by this module are defined as [b]BitmapFont[/b] class objects.
@@ -8,7 +8,7 @@ Interface Font
 	'summary: This is the method to draw text on the canvas.
 	Method DrawText(text:String, x#,y#) 
 
-	'summary: This method returns the width in pixels (or graphic units) of the given string
+	'summary: This method returns the width in pixels (or graphic units) of the given string 
 	Method GetTxtWidth:Float(text:String) 
 
 	'summary: This method returns the height in pixels (or graphic units) of the given string
@@ -17,7 +17,7 @@ End interface
 
 #rem
 footer:This FontMachine library is released under the MIT license:
-[quote]Copyright (c) 2011 Manel Ib·Òez
+[quote]Copyright (c) 2011 Manel Ib√°√±ez
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
