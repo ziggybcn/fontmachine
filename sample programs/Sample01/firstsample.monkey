@@ -3,7 +3,7 @@ Import mojo
 Import fontmachine
 
 'Start the program:
-Function Main() 
+Function Main()
 	New Tutorial
 End
 
@@ -26,7 +26,7 @@ Class Tutorial extends App
 	
 		Cls(255,255,255) 
 		'We just draw some text: 
-		font.DrawText("Hello~nworld", 210, 10, eDrawAlign.CENTER)
+		font.DrawText("Hello world!~nThis is~na sample.", 210, 10, eDrawAlign.CENTER)
 		 
 	End
 	
