@@ -164,7 +164,7 @@ Class BitmapFont Implements Font
 		This method returns the width in graphic units of the given substring.
 		This function will take fromChar and toChar parameters to calculate the substring metrics
 	#end
-	Method GetTxtWidth:Float(text:String, fromChar:Int, toChar:Int)
+	Method GetTxtWidth:Float(text:String, fromChar:Int, toChar:Int, endOnCR:Bool = False)
 
 		Local twidth:Float
 		Local MaxWidth:Float = 0
@@ -182,6 +182,7 @@ Class BitmapFont Implements Font
 				If Abs(MaxWidth)<Abs(twidth) Then MaxWidth = twidth - Kerning.x  - faceChars[lastchar].drawingMetrics.drawingWidth + faceChars[lastchar].drawingMetrics.drawingSize.x
 				twidth = 0
 				lastchar = char
+				If endOnCR Then Return MaxWidth
 			End If
 		Next
 		If lastchar >= 0 And lastchar < faceChars.Length() Then
@@ -573,9 +574,9 @@ Class BitmapFont Implements Font
 	Const lineSep:String = "~n"
 	
 	Method DrawCharsText(text:String, x:Float, y:Float, target:BitMapChar[], align:Int, startPos:Int = 1, endPos:Int = - 1)
-		Local drx:Int = x, dry:Int = y
-		Local oldX:Int = x
-		Local xOffset:Int = 0
+		Local drx:= x, dry:= y
+		Local oldX:= x
+		Local xOffset:= 0
 		'Local lineSep:String = String.FromChar(10)
 		if endPos = - 1 or endPos > text.Length Then
 			endPos = text.Length
@@ -586,8 +587,8 @@ Class BitmapFont Implements Font
 			
 			If lineSepPos < 0 or lineSepPos > endPos Then lineSepPos = endPos
 			Select align
-				Case eDrawAlign.CENTER ; xOffset = Self.GetTxtWidth(text, startPos, lineSepPos) / 2 'Forcing an INT is a good idea to prevent drawing rounding artifacts... ¿?
-				Case eDrawAlign.RIGHT ;  xOffset = Self.GetTxtWidth(text, startPos, lineSepPos)
+				Case eDrawAlign.CENTER; xOffset = Self.GetTxtWidth(text, startPos, lineSepPos, True) / 2 'Forcing an INT is a good idea to prevent drawing rounding artifacts... ¿?
+				Case eDrawAlign.RIGHT; xOffset = Self.GetTxtWidth(text, startPos, lineSepPos, True)
 			End Select
 		EndIf
 		
@@ -595,7 +596,7 @@ Class BitmapFont Implements Font
 			Local char:Int = text[i-1]
 			if char>=0 And char<=target.Length Then
 				if char = 10 Then
-					dry += Int(faceChars[32].drawingMetrics.drawingSize.y) + Kerning.y
+					dry += (faceChars[32].drawingMetrics.drawingSize.y) + Kerning.y
 					Self.DrawCharsText(text, oldX, dry, target, align, i + 1, endPos)
 					return
 				ElseIf target[char] <> null Then
@@ -605,7 +606,14 @@ Class BitmapFont Implements Font
 					if target[char].image <> null Then
 						DrawImage(target[char].image,drx-xOffset,dry)
 					ElseIf target[char].packedFontIndex > 0 Then
-						DrawImageRect(packedImages[target[char].packedFontIndex],-xOffset+drx+target[char].drawingMetrics.drawingOffset.x,dry+target[char].drawingMetrics.drawingOffset.y,target[char].packedPosition.x,target[char].packedPosition.y,target[char].packedSize.x,target[char].packedSize.y)
+						DrawImageRect(
+							packedImages[target[char].packedFontIndex],
+							- xOffset + drx + target[char].drawingMetrics.drawingOffset.x,
+							dry +target[char].drawingMetrics.drawingOffset.y,
+							target[char].packedPosition.x,
+							target[char].packedPosition.y,
+							target[char].packedSize.x,
+							target[char].packedSize.y)
 					Endif
 					drx+=faceChars[char].drawingMetrics.drawingWidth  + Kerning.x
 				endif
